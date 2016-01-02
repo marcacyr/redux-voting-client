@@ -26,7 +26,8 @@
     "immutable": "^3.7.6",
     "react": "^0.14.5",
     "react-addons-pure-render-mixin": "^0.14.5",
-    "react-dom": "^0.14.5"
+    "react-dom": "^0.14.5",
+    "react-router": "^1.0.0-rc3"
   },
   "scripts": {
     "test": "mocha --compilers js:babel-core/register --require ./test/test_helper.js 'test/**/*.@(js|jsx)'",
