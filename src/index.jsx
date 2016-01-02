@@ -1,5 +1,6 @@
 import App from './components/App';
 import {createStore} from 'redux';
+import io from 'socket.io-client';
 import {List} from 'immutable';
 import {Provider} from 'react-redux';
 import React from 'react';
@@ -19,6 +20,8 @@ store.dispatch({
         }
     }
 });
+
+const socket = io(`${location.protocol}//${location.hostname}:8090`);
 
 const routes =
     <Route component={App}>
