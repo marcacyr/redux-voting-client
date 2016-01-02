@@ -2,19 +2,14 @@ import React from 'react';
 import PureRenderMixin from 'react-addons-pure-render-mixin';
 import {List} from 'immutable';
 import Winner from './Winner';
+import Tally from './Tally';
+import Next from './Next';
 
 export default React.createClass({
     mixins: [PureRenderMixin],
 
     getPair() {
         return this.props.pair || List();
-    },
-
-    getVotes(entry) {
-        if (this.props.tally && this.props.tally.has(entry)) {
-            return this.props.tally.get(entry);
-        }
-        return 0;
     },
 
     getWinnerUI() {
@@ -26,20 +21,9 @@ export default React.createClass({
     getResultsUI() {
         return (
             <div className='results'>
-                <div className='tally'>
-                    { this.getPair().map(entry =>
-                        <div key={ entry } className='entry'>
-                            <h1>{ entry }</h1>
-                            <div className='voteCount'>
-                                { this.getVotes(entry) }
-                            </div>
-                        </div>
-                    )}
-                </div>
+                <Tally pair={ this.getPair() } tally={ this.props.tally } />
                 <div className='management'>
-                    <button ref='next' className='next' onClick={ this.props.next }>
-                        Next
-                    </button>
+                    <Next ref='next' next={ this.props.next } />
                 </div>
             </div>
         );
