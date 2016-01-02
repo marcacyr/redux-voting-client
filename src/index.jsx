@@ -1,10 +1,23 @@
+import App from './components/App';
+import {createStore} from 'redux';
+import {List} from 'immutable';
 import React from 'react';
 import ReactDOM from 'react-dom';
-import Router, {Route} from 'react-router';
-import App from './components/App';
-import Voting from './components/Voting';
-import {List} from 'immutable';
+import reducer from './reducer';
 import Results from './components/Results';
+import Router, {Route} from 'react-router';
+import Voting from './components/Voting';
+
+const store = createStore(reducer);
+store.dispatch({
+    type: 'SET_STATE',
+    state: {
+        vote: {
+            pair: ['Sunshine', '28 Days Later'],
+            tally: { Sunshine: 2 }
+        }
+    }
+});
 
 const routes =
     <Route component={App}>
