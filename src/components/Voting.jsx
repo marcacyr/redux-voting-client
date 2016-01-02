@@ -4,6 +4,7 @@ import PureRenderMixin from 'react-addons-pure-render-mixin';
 import React from 'react';
 import Vote from './Vote';
 import Winner from './Winner';
+import * as actionCreators from '../action_creators';
 
 export const Voting = React.createClass({
     mixins: [PureRenderMixin],
@@ -24,8 +25,12 @@ export const Voting = React.createClass({
 function mapStateToProps(state) {
     return {
         pair: state.getIn(['vote', 'pair']),
+        hasVoted: state.get('hasVoted'),
         winner: state.get('winner')
     };
 }
 
-export const VotingContainer = connect(mapStateToProps)(Voting);
+export const VotingContainer = connect(
+    mapStateToProps,
+    actionCreators
+)(Voting);
