@@ -1,7 +1,10 @@
 import React from 'react';
 import {List} from 'immutable';
+import PureRenderMixin from 'react-addons-pure-render-mixin';
 
 export default React.createClass({
+    mixins: [PureRenderMixin],
+
     getPair() {
         return this.props.pair || List();
     },
