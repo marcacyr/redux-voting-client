@@ -1,6 +1,6 @@
 import React from 'react';
 import {List, Map} from 'immutable';
-import Results from '../../src/components/Results';
+import {Results} from '../../src/components/Results';
 import {expect} from 'chai';
 import TestUtils from 'react-addons-test-utils';
 

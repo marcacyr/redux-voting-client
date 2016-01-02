@@ -1,12 +1,13 @@
 import App from './components/App';
 import {createStore} from 'redux';
 import {List} from 'immutable';
+import {Provider} from 'react-redux';
 import React from 'react';
 import ReactDOM from 'react-dom';
 import reducer from './reducer';
-import Results from './components/Results';
+import {ResultsContainer} from './components/Results';
 import Router, {Route} from 'react-router';
-import Voting from './components/Voting';
+import {VotingContainer} from './components/Voting';
 
 const store = createStore(reducer);
 store.dispatch({
@@ -21,11 +22,13 @@ store.dispatch({
 
 const routes =
     <Route component={App}>
-        <Route path='/results' component={ Results } />
-        <Route path='/' component={ Voting } />
+        <Route path='/results' component={ ResultsContainer } />
+        <Route path='/' component={ VotingContainer } />
     </Route>;
 
 ReactDOM.render(
-    <Router>{ routes }</Router>,
+    <Provider store={ store }>
+        <Router>{ routes }</Router>
+    </Provider>,
     document.getElementById('app')
 );
